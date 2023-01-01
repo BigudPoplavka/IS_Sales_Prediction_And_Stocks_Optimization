@@ -22,7 +22,13 @@ namespace IS_Predidiction_and_store_optimize
 
             InitializeComponent();
         }
-        
+
+
+        #region UI обработчики
+        /*
+         * UI ---> Кнопки
+         */
+
         // Вызов окна -> Предсказание спроса
         private void button1_Click(object sender, EventArgs e)
         {
@@ -36,5 +42,19 @@ namespace IS_Predidiction_and_store_optimize
         {
 
         }
+
+        #endregion
+
+        #region Инициализация UI и компонентов
+
+        /*
+         * Инициализация UI
+         */
+        private void StartupMenu_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        #endregion
     }
 }

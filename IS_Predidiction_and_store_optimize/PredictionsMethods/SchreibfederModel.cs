@@ -8,6 +8,8 @@ namespace IS_Predidiction_and_store_optimize.PredictionsMethods
 {
     public class SchreibfederModel: PredictionMethod
     {
+        private const int _NOT_SEASONAL_W_COEFF_SUM = 10;
+
         private List<double> _coeffMidWeighted;
         private List<double> _customCoeffMidWeight;
 
@@ -26,26 +28,40 @@ namespace IS_Predidiction_and_store_optimize.PredictionsMethods
 
         }
 
-        public List<double> PredictNextMonthValues(Dictionary<double, int> monthConsumption, List<double> coeffs)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="monthConsumption"></param>
+        /// <param name="targetMonthWorkDays"></param>
+        /// <param name="decimals"></param>
+        /// <returns></returns>
+        public int PredictNextMonthValuesNotSeasonal(List<(double, int)> monthConsumption, int targetMonthWorkDays, int decimals)
         {
+            if(monthConsumption.Count != _coeffMidWeighted.Count)
+            {
+                return -1;
+            }
+
             List<double> dayConsumption = new List<double>();
+            List<double> dayConsumptionPrediction = dayConsumption;
 
-            double sumDayConsumption = 0;
-            double sumCoeff = coeffs.Sum();
-
-            foreach(KeyValuePair<double, int> keyValuePair in monthConsumption)
+            foreach ((double, int) ValuesPair in monthConsumption)
             {
-                dayConsumption.Add(keyValuePair.Key / keyValuePair.Value);
+                dayConsumption.Add(Math.Round(ValuesPair.Item1 / ValuesPair.Item2, decimals));
             }
 
-            for(int i = 0; i < coeffs.Count; i++)
+            for (int i = 0; i < _coeffMidWeighted.Count; i++)
             {
-
+                dayConsumptionPrediction[i] = Math.Round(dayConsumptionPrediction[i] * _coeffMidWeighted[i], decimals);
             }
 
+            double result = Math.Round(dayConsumptionPrediction.Sum(), decimals);
+            result = Math.Round(result / _NOT_SEASONAL_W_COEFF_SUM, decimals);
+            result = Math.Round(result * targetMonthWorkDays, decimals);
 
-
+            return (int)result;
         }
+
 
     }
 }

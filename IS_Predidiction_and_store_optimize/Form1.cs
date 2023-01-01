@@ -19,6 +19,17 @@ namespace IS_Predidiction_and_store_optimize
         {
             InitializeComponent();
 
+            SchreibfederModel schreibfederModel = new SchreibfederModel();
+            schreibfederModel.PredictNextMonthValuesNotSeasonal(
+                new List<(double, int)>() 
+                { 
+                    (166, 18),
+                    (152, 18),
+                    (160, 21),
+                    (106, 21),
+                    (178, 22)
+                }, 20, 1);
+
             defaultData = new StaticDefaultData();
             defaultData.InitializeDefaultData();
 

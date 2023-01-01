@@ -247,6 +247,7 @@ namespace IS_Predidiction_and_store_optimize
             this.Name = "StartupMenu";
             this.Opacity = 0.9D;
             this.Text = "ИС | Предсказание спроса | Оптимизация товарных запасов | Кондитерские изделия";
+            this.Load += new System.EventHandler(this.StartupMenu_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
