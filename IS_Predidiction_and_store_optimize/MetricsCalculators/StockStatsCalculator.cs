@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using IS_Predidiction_and_store_optimize.PredictionsMethods;
+using IS_Predidiction_and_store_optimize.PredictionsMethods.SchreibfederSchemes;
 
 namespace IS_Predidiction_and_store_optimize.MetricsCalculators
 {
@@ -38,13 +39,13 @@ namespace IS_Predidiction_and_store_optimize.MetricsCalculators
     public class PresictionMethodsInitilizer
     {
         public static HoltWintersModel holtWintersModel;
-        public static SchreibfederModel schreibfederModel;
+        public static SchreibfederModels schreibfederModels;
         public static SMAModel smaModel;
 
         public PresictionMethodsInitilizer()
         {
             // holtWintersModel = new HoltWintersModel();
-            schreibfederModel = new SchreibfederModel();
+            schreibfederModels = new MidWeighted();
             smaModel = new SMAModel();
 
         }

@@ -8,10 +8,7 @@ namespace IS_Predidiction_and_store_optimize.MetricsCalculators
 {
     public class AvailableStocksLevelCalculator: StockStatsCalculator
     {
-        public AvailableStocksLevelCalculator()
-        {
-           
-        }
+        public AvailableStocksLevelCalculator() { }
 
         /// <summary>
         /// Уровень располагаемых запасов в средних значениях за период

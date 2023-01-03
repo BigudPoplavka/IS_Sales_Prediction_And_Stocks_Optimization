@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Windows.Forms;
 using IS_Predidiction_and_store_optimize.PredictionsMethods;
+using IS_Predidiction_and_store_optimize.PredictionsMethods.SchreibfederSchemes;
 
 
 namespace IS_Predidiction_and_store_optimize
@@ -19,17 +20,50 @@ namespace IS_Predidiction_and_store_optimize
         {
             InitializeComponent();
 
-            SchreibfederModel schreibfederModel = new SchreibfederModel();
-            schreibfederModel.PredictNextMonthValuesNotSeasonal(
-                new List<(double, int)>() 
-                { 
-                    (166, 18),
-                    (152, 18),
-                    (160, 21),
-                    (106, 21),
-                    (178, 22)
-                }, 20, 1);
+            List<(double, int)> test = new List<(double, int)>()
+            {
+                (256, 20),
+                (228, 19),
+                (171, 18)
+            };
 
+            List<(double, int)> test2 = new List<(double, int)>()
+            {
+                (166, 18),
+                (152, 18),
+                (160, 21),
+                (106, 21),
+                (178, 22)
+            };
+
+            List<(double, int)> test3 = new List<(double, int)>()
+            {
+                (560, 28),
+                (310, 31),
+                (450, 30),
+                (372, 31),
+                (310, 31)
+            };
+
+            List<double> test4 = new List<double>()
+            {
+                15, 40, 40, 30, 5, 30, 15, 50, 5, 34, 20, 15, 40, 30, 15, 30, 20
+            };
+
+            SchreibfederModels schreibfederModel = new MidWeighted();
+            predictionMethod = schreibfederModel;
+            predictionMethod.PredictNextMonthValues(test3, 28, 1);
+
+            schreibfederModel = new MidWeightedMonotonus();
+            predictionMethod = schreibfederModel;
+            predictionMethod.PredictNextMonthValues(test, 21, 1);
+
+            predictionMethod = new SMAModel();
+            predictionMethod.PredictNextValues(test4, 2);
+            predictionMethod.PredictNextValues(test4, 3);
+            predictionMethod.PredictNextValues(test4, 4);
+            predictionMethod.PredictNextValues(test4, 10);
+          
             defaultData = new StaticDefaultData();
             defaultData.InitializeDefaultData();
 

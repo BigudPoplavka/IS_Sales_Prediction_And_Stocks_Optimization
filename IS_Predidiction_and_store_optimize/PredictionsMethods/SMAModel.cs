@@ -11,7 +11,6 @@ namespace IS_Predidiction_and_store_optimize.PredictionsMethods
         private const int _MIN_T = 2;
         private const int _MIN_SALES_LEN = 2;
 
-
         public SMAModel() { }
 
         /// <summary>
@@ -21,7 +20,7 @@ namespace IS_Predidiction_and_store_optimize.PredictionsMethods
         /// <param name="salesList">Список значений продаж за период</param>
         /// <param name="T">Ширина окна Т, которая указывает, за какой период мы будем усреднять продажи</param>
         /// <returns>Массив пркдсказанных значений с выбранным окном</returns>
-        public List<double> PredictNextValues(List<double> salesList, int T)
+        public override List<double> PredictNextValues(List<double> salesList, int T)
         {
             if(salesList.Count < _MIN_SALES_LEN || T < _MIN_T)
             {
