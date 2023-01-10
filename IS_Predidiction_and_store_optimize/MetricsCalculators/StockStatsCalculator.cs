@@ -36,18 +36,5 @@ namespace IS_Predidiction_and_store_optimize.MetricsCalculators
         }
     }
 
-    public class PresictionMethodsInitilizer
-    {
-        public static HoltWintersModel holtWintersModel;
-        public static SchreibfederModels schreibfederModels;
-        public static SMAModel smaModel;
-
-        public PresictionMethodsInitilizer()
-        {
-            // holtWintersModel = new HoltWintersModel();
-            schreibfederModels = new MidWeighted();
-            smaModel = new SMAModel();
-
-        }
-    }
+   
 }

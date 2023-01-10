@@ -8,11 +8,26 @@ using IS_Predidiction_and_store_optimize.PredictionsMethods.SchreibfederSchemes;
 
 namespace IS_Predidiction_and_store_optimize
 {
+    public enum Periods
+    {
+        Дни, Недели, Месяцы, Годы
+    }
+
+    public enum Month
+    {
+        Январь, Февраль, Март, Апрель, Май, Июнь, Июль, Август, Сентябрь, Откябрь, Ноябрь, Декабрь
+    }
+
     public partial class Form1 : Form
     {
         protected StaticDefaultData defaultData;
 
         private string _newCategAdded = "Новая категория успешно добавлена";
+
+        private List<TextBox> _inputsDays;
+        private List<TextBox> _inputsWeeks;
+        private List<TextBox> _inputsMonth;
+        private List<TextBox> _inputsYears;
 
         private PredictionMethod predictionMethod;
 
@@ -20,55 +35,57 @@ namespace IS_Predidiction_and_store_optimize
         {
             InitializeComponent();
 
-            List<(double, int)> test = new List<(double, int)>()
-            {
-                (256, 20),
-                (228, 19),
-                (171, 18)
-            };
+            //List<(double, int)> test = new List<(double, int)>()
+            //{
+            //    (256, 20),
+            //    (228, 19),
+            //    (171, 18)
+            //};
 
-            List<(double, int)> test2 = new List<(double, int)>()
-            {
-                (166, 18),
-                (152, 18),
-                (160, 21),
-                (106, 21),
-                (178, 22)
-            };
+            //List<(double, int)> test2 = new List<(double, int)>()
+            //{
+            //    (166, 18),
+            //    (152, 18),
+            //    (160, 21),
+            //    (106, 21),
+            //    (178, 22)
+            //};
 
-            List<(double, int)> test3 = new List<(double, int)>()
-            {
-                (560, 28),
-                (310, 31),
-                (450, 30),
-                (372, 31),
-                (310, 31)
-            };
+            //List<(double, int)> test3 = new List<(double, int)>()
+            //{
+            //    (560, 28),
+            //    (310, 31),
+            //    (450, 30),
+            //    (372, 31),
+            //    (310, 31)
+            //};
 
-            List<double> test4 = new List<double>()
-            {
-                15, 40, 40, 30, 5, 30, 15, 50, 5, 34, 20, 15, 40, 30, 15, 30, 20
-            };
+            //List<double> test4 = new List<double>()
+            //{
+            //    15, 40, 40, 30, 5, 30, 15, 50, 5, 34, 20, 15, 40, 30, 15, 30, 20
+            //};
 
-            SchreibfederModels schreibfederModel = new MidWeighted();
-            predictionMethod = schreibfederModel;
-            predictionMethod.PredictNextMonthValues(test3, 28, 1);
+            //SchreibfederModels schreibfederModel = new MidWeighted();
+            //predictionMethod = schreibfederModel;
+            //predictionMethod.PredictNextMonthValues(test3, 28, 1);
 
-            schreibfederModel = new MidWeightedMonotonus();
-            predictionMethod = schreibfederModel;
-            predictionMethod.PredictNextMonthValues(test, 21, 1);
+            //schreibfederModel = new MidWeightedMonotonus();
+            //predictionMethod = schreibfederModel;
+            //predictionMethod.PredictNextMonthValues(test, 21, 1);
 
-            predictionMethod = new SMAModel();
-            predictionMethod.PredictNextValues(test4, 2);
-            predictionMethod.PredictNextValues(test4, 3);
-            predictionMethod.PredictNextValues(test4, 4);
-            predictionMethod.PredictNextValues(test4, 10);
+            //predictionMethod = new SMAModel();
+            //predictionMethod.PredictNextValues(test4, 2);
+            //predictionMethod.PredictNextValues(test4, 3);
+            //predictionMethod.PredictNextValues(test4, 4);
+            //predictionMethod.PredictNextValues(test4, 10);
           
             defaultData = new StaticDefaultData();
             defaultData.InitializeDefaultData();
 
             ShowCategoriesTree(StaticDefaultData.defaultCategories);
             CheckPresets();
+
+            InitilizeControlsData();
         }
 
         #region Инициализация калькуляторов
@@ -85,6 +102,20 @@ namespace IS_Predidiction_and_store_optimize
         /*
          * Инициализация UI
          */
+
+        private void InitilizeControlsData()
+        {
+            comboBox1.Enabled = false;
+            comboBox2.Enabled = false;
+
+            checkBox2.Enabled = false;
+
+            comboBox1.Items.AddRange(new object[] 
+            { 
+                StaticDefaultData.plourProducts.CategoryName, StaticDefaultData.chocolateProducts.CategoryName, StaticDefaultData.sugarProducts.CategoryName
+            });
+            comboBox3.Items.AddRange(Enum.GetNames<Month>());
+        }
 
         private void ShowCategoriesTree(List<Category> categories)
         {
@@ -222,15 +253,36 @@ namespace IS_Predidiction_and_store_optimize
         // Импорт данных из таблиц
         private void button2_Click(object sender, EventArgs e)
         {
-
+            FileDialog fileDialog = new OpenFileDialog();
+            fileDialog.Title = "Импортировать файл двнных";
+            fileDialog.DefaultExt = ".xls";
+            fileDialog.Filter = "TXT|*.txt|XLS|*.xls|CSV|*.csv|JSON|*.json";
+            fileDialog.ShowDialog();
         }
-
-
-        #endregion
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            StartupMenu.instance.Show();
+             StartupMenu.instance.Show();
         }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            comboBox1.Enabled = checkBox1.Checked;
+
+            checkBox2.Enabled = checkBox1.Checked;
+            comboBox2.Enabled = checkBox1.Checked;
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+           if(checkBox2.Enabled)
+           {
+                comboBox2.Enabled = checkBox2.Checked;
+           }
+        }
+
+        
+
+        #endregion
     }
 }

@@ -56,7 +56,7 @@ namespace IS_Predidiction_and_store_optimize
             this.tableLayoutPanel1.ColumnCount = 3;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.13389F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 87.86611F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 676F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 678F));
             this.tableLayoutPanel1.Controls.Add(this.label1, 1, 1);
             this.tableLayoutPanel1.Controls.Add(this.textBox1, 2, 1);
             this.tableLayoutPanel1.Controls.Add(this.label2, 1, 2);
@@ -82,9 +82,10 @@ namespace IS_Predidiction_and_store_optimize
             this.label1.AutoSize = true;
             this.label1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(25, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(157, 30);
+            this.label1.Size = new System.Drawing.Size(155, 30);
             this.label1.TabIndex = 0;
             this.label1.Text = "Категория";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -94,10 +95,10 @@ namespace IS_Predidiction_and_store_optimize
             this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(188, 23);
+            this.textBox1.Location = new System.Drawing.Point(186, 23);
             this.textBox1.Margin = new System.Windows.Forms.Padding(3, 3, 3, 0);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(671, 27);
+            this.textBox1.Size = new System.Drawing.Size(673, 27);
             this.textBox1.TabIndex = 1;
             // 
             // label2
@@ -106,10 +107,11 @@ namespace IS_Predidiction_and_store_optimize
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.ForeColor = System.Drawing.Color.White;
             this.label2.Location = new System.Drawing.Point(25, 70);
             this.label2.Margin = new System.Windows.Forms.Padding(3, 20, 3, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(157, 28);
+            this.label2.Size = new System.Drawing.Size(155, 28);
             this.label2.TabIndex = 2;
             this.label2.Text = "Подкатегории ";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -130,7 +132,7 @@ namespace IS_Predidiction_and_store_optimize
             this.tableLayoutPanel2.Controls.Add(this.textBox3, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.textBox2, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.button2, 0, 8);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(188, 53);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(186, 53);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 9;
             this.tableLayoutPanel1.SetRowSpan(this.tableLayoutPanel2, 2);
@@ -143,7 +145,7 @@ namespace IS_Predidiction_and_store_optimize
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 33F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(671, 307);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(673, 307);
             this.tableLayoutPanel2.TabIndex = 7;
             // 
             // textBox9
@@ -206,9 +208,10 @@ namespace IS_Predidiction_and_store_optimize
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.BackColor = System.Drawing.Color.SlateGray;
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(335, 264);
+            this.button2.BackColor = System.Drawing.Color.SpringGreen;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button2.ForeColor = System.Drawing.Color.Black;
+            this.button2.Location = new System.Drawing.Point(337, 264);
             this.button2.Margin = new System.Windows.Forms.Padding(0);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(336, 43);
@@ -221,10 +224,10 @@ namespace IS_Predidiction_and_store_optimize
             // 
             this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.BackColor = System.Drawing.Color.SlateGray;
+            this.button1.BackColor = System.Drawing.Color.SpringGreen;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.ForeColor = System.Drawing.Color.Black;
             this.button1.Location = new System.Drawing.Point(523, 366);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(336, 60);
@@ -237,6 +240,7 @@ namespace IS_Predidiction_and_store_optimize
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(36)))), ((int)(((byte)(36)))), ((int)(((byte)(36)))));
             this.ClientSize = new System.Drawing.Size(865, 437);
             this.Controls.Add(this.tableLayoutPanel1);
             this.MaximizeBox = false;
