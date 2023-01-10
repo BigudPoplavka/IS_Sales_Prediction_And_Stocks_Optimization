@@ -23,11 +23,10 @@ namespace IS_Predidiction_and_store_optimize
         protected StaticDefaultData defaultData;
 
         private string _newCategAdded = "Новая категория успешно добавлена";
-
-        private List<TextBox> _inputsDays;
-        private List<TextBox> _inputsWeeks;
-        private List<TextBox> _inputsMonth;
-        private List<TextBox> _inputsYears;
+        private string _errInputs = "Ошибка!!! Поля пусты или заполнены не верно";
+        private string _errDelEmpty = "Ошибка!!! Записи отсутствуют";
+        private string _sureDelAll = "Уверены, что хотите очистить все?";
+        private string _sureDelTitle = "Очистить все?";
 
         private PredictionMethod predictionMethod;
 
@@ -35,35 +34,35 @@ namespace IS_Predidiction_and_store_optimize
         {
             InitializeComponent();
 
-            //List<(double, int)> test = new List<(double, int)>()
-            //{
-            //    (256, 20),
-            //    (228, 19),
-            //    (171, 18)
-            //};
+            List<(double, int)> test = new List<(double, int)>()
+            {
+                (256, 20),
+                (228, 19),
+                (171, 18)
+            };
 
-            //List<(double, int)> test2 = new List<(double, int)>()
-            //{
-            //    (166, 18),
-            //    (152, 18),
-            //    (160, 21),
-            //    (106, 21),
-            //    (178, 22)
-            //};
+            List<(double, int)> test2 = new List<(double, int)>()
+            {
+                (166, 18),
+                (152, 18),
+                (160, 21),
+                (106, 21),
+                (178, 22)
+            };
 
-            //List<(double, int)> test3 = new List<(double, int)>()
-            //{
-            //    (560, 28),
-            //    (310, 31),
-            //    (450, 30),
-            //    (372, 31),
-            //    (310, 31)
-            //};
+            List<(double, int)> test3 = new List<(double, int)>()
+            {
+                (560, 28),
+                (310, 31),
+                (450, 30),
+                (372, 31),
+                (310, 31)
+            };
 
-            //List<double> test4 = new List<double>()
-            //{
-            //    15, 40, 40, 30, 5, 30, 15, 50, 5, 34, 20, 15, 40, 30, 15, 30, 20
-            //};
+            List<double> test4 = new List<double>()
+            {
+                15, 40, 40, 30, 5, 30, 15, 50, 5, 34, 20, 15, 40, 30, 15, 30, 20
+            };
 
             //SchreibfederModels schreibfederModel = new MidWeighted();
             //predictionMethod = schreibfederModel;
@@ -78,7 +77,7 @@ namespace IS_Predidiction_and_store_optimize
             //predictionMethod.PredictNextValues(test4, 3);
             //predictionMethod.PredictNextValues(test4, 4);
             //predictionMethod.PredictNextValues(test4, 10);
-          
+
             defaultData = new StaticDefaultData();
             defaultData.InitializeDefaultData();
 
@@ -88,11 +87,30 @@ namespace IS_Predidiction_and_store_optimize
             InitilizeControlsData();
         }
 
-        #region Инициализация калькуляторов
+        #region Передача данных между формами
 
-        public void InitializeCalculators()
+        public List<SaleDataRow> GetDataFromGridView()
         {
+            List<SaleDataRow> dataRows = new List<SaleDataRow>();
 
+            if(checkBox1.Checked)
+            {
+                for(int i = 0; i < dataGridView1.Rows.Count - 1; i++)
+                {
+                    dataRows.Add(new SaleDataRow(
+                            dataGridView1.Rows[i].Cells[0].Value.ToString(), dataGridView1.Rows[i].Cells[1].Value.ToString(),
+                            Double.Parse(dataGridView1.Rows[i].Cells[2].Value.ToString()), dataGridView1.Rows[i].Cells[3].Value.ToString()));
+                }
+            }
+            else
+            {
+                for (int i = 0; i < dataGridView1.Rows.Count - 1; i++)
+                {
+                    dataRows.Add(new SaleDataRow(Double.Parse(dataGridView1.Rows[i].Cells[2].Value.ToString()), dataGridView1.Rows[i].Cells[3].Value.ToString()));
+                }
+            }
+
+            return dataRows;
         }
 
         #endregion
@@ -253,11 +271,8 @@ namespace IS_Predidiction_and_store_optimize
         // Импорт данных из таблиц
         private void button2_Click(object sender, EventArgs e)
         {
-            FileDialog fileDialog = new OpenFileDialog();
-            fileDialog.Title = "Импортировать файл двнных";
-            fileDialog.DefaultExt = ".xls";
-            fileDialog.Filter = "TXT|*.txt|XLS|*.xls|CSV|*.csv|JSON|*.json";
-            fileDialog.ShowDialog();
+            Import import = new Import();
+            import.ShowDialog();
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -281,8 +296,69 @@ namespace IS_Predidiction_and_store_optimize
            }
         }
 
-        
+        // SMA
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if(dataGridView1.Rows.Count == 1)
+            {
+                MessageBox.Show(_errInputs);
+                return;
+            }
+
+            var savedData = GetDataFromGridView();
+
+            predictionMethod = new SMAModel();
+
+            FormSMA form = new FormSMA(savedData, predictionMethod);
+            form.Show();
+        }
+
+        // Добавить
+        private void button6_Click(object sender, EventArgs e)
+        {
+            if(String.IsNullOrWhiteSpace(maskedTextBox1.Text) || comboBox3.SelectedItem == null)
+            {
+                MessageBox.Show(_errInputs);
+                return;
+            }
+
+            var curr = dataGridView1.Rows.Add();
+
+            dataGridView1.Rows[curr].Cells[0].Value= comboBox1.SelectedItem;
+            dataGridView1.Rows[curr].Cells[1].Value= comboBox2.SelectedItem;
+            dataGridView1.Rows[curr].Cells[2].Value= maskedTextBox1.Text;
+            dataGridView1.Rows[curr].Cells[3].Value= comboBox3.SelectedItem;
+        }
+
+        // Удалить последнее
+        private void button7_Click(object sender, EventArgs e)
+        {
+            if(dataGridView1.Rows.Count == 1)
+            {
+                MessageBox.Show(_errDelEmpty);
+                return;
+            }
+
+            dataGridView1.Rows.RemoveAt(dataGridView1.Rows.Count - 2);
+        }
+
+        // Удалить все
+        private void button8_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.Rows.Count == 1)
+            {
+                MessageBox.Show(_errDelEmpty);
+                return;
+            }
+
+            if (MessageBox.Show(_sureDelAll, _sureDelTitle, MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                dataGridView1.Rows.Clear();
+            }
+        }
 
         #endregion
+
+
     }
 }
