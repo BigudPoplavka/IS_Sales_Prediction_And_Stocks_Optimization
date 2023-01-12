@@ -93,6 +93,7 @@ namespace IS_Predidiction_and_store_optimize
             this.MaximizeBox = false;
             this.Name = "ModelForm";
             this.Text = "ModelForm";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ModelForm_FormClosed);
             this.Load += new System.EventHandler(this.ModelForm_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();

@@ -32,7 +32,7 @@ namespace IS_Predidiction_and_store_optimize
 
         private PredictionMethod _predictionMethod;
 
-        private Chart chart;
+        protected Chart chart;
 
         public FormSMA(List<SaleDataRow> values, PredictionMethod predictionMethod)
         {

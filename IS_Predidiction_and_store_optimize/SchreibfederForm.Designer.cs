@@ -156,6 +156,7 @@ namespace IS_Predidiction_and_store_optimize
             this.MaximizeBox = false;
             this.Name = "SchreibfederForm";
             this.Text = "Методы Шрайбфедера";
+            this.Load += new System.EventHandler(this.SchreibfederForm_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 

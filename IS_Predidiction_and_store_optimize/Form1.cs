@@ -275,6 +275,22 @@ namespace IS_Predidiction_and_store_optimize
 
         #endregion
 
+        private List<SaleDataRow> GetSavedData()
+        {
+            List<SaleDataRow> savedData = null;
+
+            if (_importedData == null)
+            {
+                savedData = GetDataFromGridView();
+            }
+            else
+            {
+                savedData = _importedData;
+            }
+
+            return savedData;
+        }
+
         #region UI обработчики
         /*
          * UI ---> Кнопки
@@ -320,22 +336,24 @@ namespace IS_Predidiction_and_store_optimize
         // SMA
         private void button3_Click(object sender, EventArgs e)
         {
-            if(dataGridView1.Rows.Count == 1 && _importedData == null)
+            if (dataGridView1.Rows.Count == 1 && _importedData == null)
             {
                 MessageBox.Show(_errInputs);
                 return;
             }
 
-            List<SaleDataRow> savedData = null;
+            List<SaleDataRow> savedData = GetSavedData();
 
-            if (_importedData == null)
-            {
-                savedData = GetDataFromGridView();
-            }
-            else
-            {
-                savedData = _importedData;
-            }
+            //List<SaleDataRow> savedData = null;
+
+            //if (_importedData == null)
+            //{
+            //    savedData = GetDataFromGridView();
+            //}
+            //else
+            //{
+            //    savedData = _importedData;
+            //}
 
             predictionMethod = new SMAModel();
 
@@ -346,7 +364,15 @@ namespace IS_Predidiction_and_store_optimize
         // Шрайбфедер
         private void button5_Click(object sender, EventArgs e)
         {
-            SchreibfederForm schreibfederForm = new SchreibfederForm();
+            if (dataGridView1.Rows.Count == 1 && _importedData == null)
+            {
+                MessageBox.Show(_errInputs);
+                return;
+            }
+
+            List<SaleDataRow> savedData = GetSavedData();
+
+            SchreibfederForm schreibfederForm = new SchreibfederForm(savedData);
             schreibfederForm.ShowDialog();
         }
 

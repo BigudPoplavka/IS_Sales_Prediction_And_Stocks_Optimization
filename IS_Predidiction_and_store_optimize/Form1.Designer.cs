@@ -218,7 +218,7 @@ namespace IS_Predidiction_and_store_optimize
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 132F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 159F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 145F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 61F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 67F));
             this.tableLayoutPanel5.Controls.Add(this.button5, 4, 0);
             this.tableLayoutPanel5.Controls.Add(this.button4, 3, 0);
             this.tableLayoutPanel5.Controls.Add(this.button3, 2, 0);
@@ -241,7 +241,7 @@ namespace IS_Predidiction_and_store_optimize
             this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.button5.ForeColor = System.Drawing.Color.SpringGreen;
-            this.button5.Location = new System.Drawing.Point(497, 3);
+            this.button5.Location = new System.Drawing.Point(491, 3);
             this.button5.Name = "button5";
             this.button5.Size = new System.Drawing.Size(139, 59);
             this.button5.TabIndex = 3;
@@ -258,7 +258,7 @@ namespace IS_Predidiction_and_store_optimize
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.button4.ForeColor = System.Drawing.Color.SpringGreen;
-            this.button4.Location = new System.Drawing.Point(338, 3);
+            this.button4.Location = new System.Drawing.Point(332, 3);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(153, 59);
             this.button4.TabIndex = 2;
@@ -274,7 +274,7 @@ namespace IS_Predidiction_and_store_optimize
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.button3.ForeColor = System.Drawing.Color.SpringGreen;
-            this.button3.Location = new System.Drawing.Point(206, 3);
+            this.button3.Location = new System.Drawing.Point(200, 3);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(126, 59);
             this.button3.TabIndex = 1;
@@ -289,9 +289,9 @@ namespace IS_Predidiction_and_store_optimize
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(81, 0);
+            this.label3.Location = new System.Drawing.Point(79, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(119, 65);
+            this.label3.Size = new System.Drawing.Size(115, 65);
             this.label3.TabIndex = 4;
             this.label3.Text = "Метод предсказания";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -306,7 +306,7 @@ namespace IS_Predidiction_and_store_optimize
             this.label7.ForeColor = System.Drawing.Color.SpringGreen;
             this.label7.Location = new System.Drawing.Point(3, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(72, 65);
+            this.label7.Size = new System.Drawing.Size(70, 65);
             this.label7.TabIndex = 5;
             this.label7.Text = "Шаг 2";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -348,7 +348,7 @@ namespace IS_Predidiction_and_store_optimize
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 131F));
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 162F));
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 179F));
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 65F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 71F));
             this.tableLayoutPanel7.Controls.Add(this.comboBox1, 0, 1);
             this.tableLayoutPanel7.Controls.Add(this.comboBox2, 1, 1);
             this.tableLayoutPanel7.Controls.Add(this.comboBox3, 3, 1);
@@ -377,7 +377,7 @@ namespace IS_Predidiction_and_store_optimize
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Location = new System.Drawing.Point(3, 38);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(155, 28);
+            this.comboBox1.Size = new System.Drawing.Size(152, 28);
             this.comboBox1.TabIndex = 0;
             // 
             // comboBox2
@@ -386,9 +386,9 @@ namespace IS_Predidiction_and_store_optimize
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(164, 38);
+            this.comboBox2.Location = new System.Drawing.Point(161, 38);
             this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(160, 28);
+            this.comboBox2.Size = new System.Drawing.Size(157, 28);
             this.comboBox2.TabIndex = 1;
             // 
             // comboBox3
@@ -397,7 +397,7 @@ namespace IS_Predidiction_and_store_optimize
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(472, 38);
+            this.comboBox3.Location = new System.Drawing.Point(466, 38);
             this.comboBox3.Name = "comboBox3";
             this.comboBox3.Size = new System.Drawing.Size(125, 28);
             this.comboBox3.TabIndex = 3;
@@ -422,9 +422,9 @@ namespace IS_Predidiction_and_store_optimize
             | System.Windows.Forms.AnchorStyles.Left)));
             this.checkBox2.AutoSize = true;
             this.checkBox2.ForeColor = System.Drawing.Color.White;
-            this.checkBox2.Location = new System.Drawing.Point(164, 3);
+            this.checkBox2.Location = new System.Drawing.Point(161, 3);
             this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(158, 29);
+            this.checkBox2.Size = new System.Drawing.Size(157, 29);
             this.checkBox2.TabIndex = 6;
             this.checkBox2.Text = "Для подкатегории";
             this.checkBox2.UseVisualStyleBackColor = true;
@@ -437,7 +437,7 @@ namespace IS_Predidiction_and_store_optimize
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(330, 0);
+            this.label5.Location = new System.Drawing.Point(324, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(136, 35);
             this.label5.TabIndex = 7;
@@ -450,7 +450,7 @@ namespace IS_Predidiction_and_store_optimize
             | System.Windows.Forms.AnchorStyles.Left)));
             this.label6.AutoSize = true;
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(472, 0);
+            this.label6.Location = new System.Drawing.Point(466, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(54, 35);
             this.label6.TabIndex = 8;
@@ -464,7 +464,7 @@ namespace IS_Predidiction_and_store_optimize
             | System.Windows.Forms.AnchorStyles.Right)));
             this.button6.BackColor = System.Drawing.Color.SpringGreen;
             this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button6.Location = new System.Drawing.Point(602, 37);
+            this.button6.Location = new System.Drawing.Point(596, 37);
             this.button6.Margin = new System.Windows.Forms.Padding(2);
             this.button6.Name = "button6";
             this.button6.Size = new System.Drawing.Size(158, 32);
@@ -480,7 +480,7 @@ namespace IS_Predidiction_and_store_optimize
             | System.Windows.Forms.AnchorStyles.Right)));
             this.button7.BackColor = System.Drawing.Color.Orange;
             this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button7.Location = new System.Drawing.Point(764, 37);
+            this.button7.Location = new System.Drawing.Point(758, 37);
             this.button7.Margin = new System.Windows.Forms.Padding(2);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(175, 32);
@@ -496,7 +496,7 @@ namespace IS_Predidiction_and_store_optimize
             | System.Windows.Forms.AnchorStyles.Right)));
             this.button8.BackColor = System.Drawing.Color.Salmon;
             this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button8.Location = new System.Drawing.Point(764, 2);
+            this.button8.Location = new System.Drawing.Point(758, 2);
             this.button8.Margin = new System.Windows.Forms.Padding(2);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(175, 31);
@@ -507,7 +507,7 @@ namespace IS_Predidiction_and_store_optimize
             // 
             // maskedTextBox1
             // 
-            this.maskedTextBox1.Location = new System.Drawing.Point(330, 38);
+            this.maskedTextBox1.Location = new System.Drawing.Point(324, 38);
             this.maskedTextBox1.Mask = "00000";
             this.maskedTextBox1.Name = "maskedTextBox1";
             this.maskedTextBox1.Size = new System.Drawing.Size(136, 27);
