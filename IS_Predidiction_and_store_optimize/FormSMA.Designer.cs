@@ -52,9 +52,10 @@ namespace IS_Predidiction_and_store_optimize
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(2, 4);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowCount = 3;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 73.83178F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 209F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 77F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 73F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1359, 780);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
@@ -77,7 +78,7 @@ namespace IS_Predidiction_and_store_optimize
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 26.19048F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 131F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 307F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(229, 565);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(229, 624);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // label1
@@ -91,7 +92,7 @@ namespace IS_Predidiction_and_store_optimize
             this.label1.ForeColor = System.Drawing.Color.SpringGreen;
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(223, 93);
+            this.label1.Size = new System.Drawing.Size(223, 137);
             this.label1.TabIndex = 0;
             this.label1.Text = "Добавить окна периодичности";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -104,16 +105,16 @@ namespace IS_Predidiction_and_store_optimize
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(3, 93);
+            this.label2.Location = new System.Drawing.Point(3, 137);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(153, 33);
+            this.label2.Size = new System.Drawing.Size(153, 48);
             this.label2.TabIndex = 1;
             this.label2.Text = "Ширина окна - T";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // numericUpDown1
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(162, 96);
+            this.numericUpDown1.Location = new System.Drawing.Point(162, 140);
             this.numericUpDown1.Maximum = new decimal(new int[] {
             10,
             0,
@@ -139,7 +140,7 @@ namespace IS_Predidiction_and_store_optimize
             | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.BackColor = System.Drawing.Color.SpringGreen;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Location = new System.Drawing.Point(3, 129);
+            this.button1.Location = new System.Drawing.Point(3, 188);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(153, 29);
             this.button1.TabIndex = 3;

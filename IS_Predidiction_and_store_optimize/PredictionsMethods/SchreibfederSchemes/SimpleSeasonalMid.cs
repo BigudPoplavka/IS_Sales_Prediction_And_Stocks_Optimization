@@ -13,8 +13,8 @@ namespace IS_Predidiction_and_store_optimize.PredictionsMethods.SchreibfederSche
             coeffs = new List<double>()
             { 1, 1, 1 };
 
-            menuText = "Простая сезонная средняя";
-            description = "Рассматриваются показатели за соответствующие " +
+            MenuText = "Простая сезонная средняя";
+            Description = "Рассматриваются показатели за соответствующие " +
                 "три месяца прошлого года(с учетом или без учета несезонного коэффициента тенденции)";
         }
     }

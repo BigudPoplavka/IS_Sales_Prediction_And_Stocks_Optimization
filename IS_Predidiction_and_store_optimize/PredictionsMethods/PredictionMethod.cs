@@ -11,6 +11,9 @@ namespace IS_Predidiction_and_store_optimize.PredictionsMethods
         protected string menuText;
         protected string description;
 
+        public string MenuText { get => menuText; set => menuText = value; }
+        public string Description { get => description; set => description = value; }
+
         public virtual List<double> PredictNextValues(List<double> salesList, int T)
         {
             return null;

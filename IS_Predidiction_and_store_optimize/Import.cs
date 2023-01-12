@@ -12,7 +12,10 @@ namespace IS_Predidiction_and_store_optimize
 {
     public partial class Import : Form
     {
+        private Form1 _form11;
+
         private string _errInputs = "Ошибка!!! Поля пусты или заполнены не верно";
+        private string _errInputsLen = "Ошибка!!! Неравное количество параметров";
 
         private string _dataX;
         private string _dataY;
@@ -20,12 +23,16 @@ namespace IS_Predidiction_and_store_optimize
         private List<double> _parsedDataY;
         private List<string> _parsedDataX;
 
-        public Import()
+        public event Action onDataSaved = delegate { };
+
+        public Import(Form1 form1)
         {
             InitializeComponent();
 
             _parsedDataY = new List<double>();
             _parsedDataX = new List<string>();
+
+            _form11 = form1;
         }
 
         #region UI обработчики
@@ -45,7 +52,12 @@ namespace IS_Predidiction_and_store_optimize
             _dataX = textBox1.Text;
             _dataY = textBox2.Text;
 
-            IsValidData();
+            if(IsValidData())
+            {
+                _form11.SetImportedData(GetDataFromImport());
+
+                Close();
+            }
         }
 
         #endregion
@@ -56,6 +68,12 @@ namespace IS_Predidiction_and_store_optimize
         {
             string[] dataY = _dataY.Split(new char[] { '\n', ' ', ',' });
             string[] dataX = _dataX.Split(new char[] { '\n', ' ', ',' });
+
+            if(dataX.Length != dataY.Length)
+            {
+                MessageBox.Show(_errInputsLen);
+                return false;
+            }
 
             try
             {
@@ -87,5 +105,27 @@ namespace IS_Predidiction_and_store_optimize
         }
 
         #endregion
+
+        public List<SaleDataRow> GetDataFromImport()
+        {
+            List<SaleDataRow> dataRows = new List<SaleDataRow>();
+
+            for (int i = 0; i < _parsedDataY.Count; i++)
+            {
+                dataRows.Add(new SaleDataRow(_parsedDataY[i], _parsedDataX[i]));
+            }
+
+            return dataRows;
+        }
+
+        private void Import_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            onDataSaved();
+        }
+
+        private void Import_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

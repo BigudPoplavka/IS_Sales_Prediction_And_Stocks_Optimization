@@ -6,9 +6,12 @@ using System.Threading.Tasks;
 
 namespace IS_Predidiction_and_store_optimize.PredictionsMethods.SchreibfederSchemes
 {
-    public class SchreibfederModels: PredictionMethod
+    public class SchreibfederModels : PredictionMethod
     {
         private const int _NOT_SEASONAL_W_COEFF_SUM = 10;
+
+        protected string ModelMenuText { get => menuText; }
+        protected string ModelDescription { get => description; }
 
         protected List<double> coeffs;
 

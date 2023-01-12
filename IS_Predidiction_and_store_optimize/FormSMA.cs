@@ -16,6 +16,7 @@ namespace IS_Predidiction_and_store_optimize
     {
         private string _seriesSales = "Продажи";
         private string _seriesPredict = "Прогноз при T = ";
+        private string _errAdditionLegend = "Ошибка!!! График уже существует либо произошла непредвиденная ошибка";
 
         private List<double> test4 = new List<double>()
             {
@@ -81,7 +82,16 @@ namespace IS_Predidiction_and_store_optimize
         {
             var title = _seriesPredict + T.ToString();
 
-            chart.Legends.Add(title);
+            try
+            {
+                chart.Legends.Add(title);
+            }
+            catch
+            {
+                MessageBox.Show(_errAdditionLegend);
+                return;
+            }
+
 
             chart.Legends[title].ForeColor = _seriesColors.Pop();
             chart.Series.Add(title);

@@ -20,9 +20,14 @@ namespace IS_Predidiction_and_store_optimize
 
     public partial class Form1 : Form
     {
+        public static Form1 instance;
+
+        private List<SaleDataRow> _importedData;
+
         protected StaticDefaultData defaultData;
 
         private string _newCategAdded = "Новая категория успешно добавлена";
+        private string _imortedDataSaved = "Данные успешно импортированы";
         private string _errInputs = "Ошибка!!! Поля пусты или заполнены не верно";
         private string _errDelEmpty = "Ошибка!!! Записи отсутствуют";
         private string _sureDelAll = "Уверены, что хотите очистить все?";
@@ -33,6 +38,11 @@ namespace IS_Predidiction_and_store_optimize
         public Form1()
         {
             InitializeComponent();
+
+            if(instance == null)
+            {
+                instance = this;
+            }
 
             List<(double, int)> test = new List<(double, int)>()
             {
@@ -111,6 +121,11 @@ namespace IS_Predidiction_and_store_optimize
             }
 
             return dataRows;
+        }
+
+        public void SetImportedData(List<SaleDataRow> data)
+        {
+            _importedData = data;
         }
 
         #endregion
@@ -240,6 +255,12 @@ namespace IS_Predidiction_and_store_optimize
             }
         }
 
+        //сообщение о сохранении импорта
+        public void UpdateSavedData()
+        {
+            MessageBox.Show(_imortedDataSaved);
+        }
+
         #endregion
 
         #region Инициализация UI и компонентов
@@ -251,7 +272,6 @@ namespace IS_Predidiction_and_store_optimize
         {
             WindowState = FormWindowState.Maximized;
         }
-
 
         #endregion
 
@@ -271,7 +291,8 @@ namespace IS_Predidiction_and_store_optimize
         // Импорт данных из таблиц
         private void button2_Click(object sender, EventArgs e)
         {
-            Import import = new Import();
+            Import import = new Import(instance);
+            import.onDataSaved += UpdateSavedData;
             import.ShowDialog();
         }
 
@@ -299,18 +320,34 @@ namespace IS_Predidiction_and_store_optimize
         // SMA
         private void button3_Click(object sender, EventArgs e)
         {
-            if(dataGridView1.Rows.Count == 1)
+            if(dataGridView1.Rows.Count == 1 && _importedData == null)
             {
                 MessageBox.Show(_errInputs);
                 return;
             }
 
-            var savedData = GetDataFromGridView();
+            List<SaleDataRow> savedData = null;
+
+            if (_importedData == null)
+            {
+                savedData = GetDataFromGridView();
+            }
+            else
+            {
+                savedData = _importedData;
+            }
 
             predictionMethod = new SMAModel();
 
             FormSMA form = new FormSMA(savedData, predictionMethod);
             form.Show();
+        }
+
+        // Шрайбфедер
+        private void button5_Click(object sender, EventArgs e)
+        {
+            SchreibfederForm schreibfederForm = new SchreibfederForm();
+            schreibfederForm.ShowDialog();
         }
 
         // Добавить
@@ -358,7 +395,5 @@ namespace IS_Predidiction_and_store_optimize
         }
 
         #endregion
-
-
     }
 }
