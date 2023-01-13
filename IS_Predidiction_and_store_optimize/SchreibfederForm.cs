@@ -22,7 +22,13 @@ namespace IS_Predidiction_and_store_optimize
         private List<(double, string)> _chartData;
         private List<SaleDataRow> _inputValues;
 
+        private const int _WMS_SCHEME_PARAMS_CNT = 2;
+        private const int _THREE_SCHEME_PARAMS_CNT = 3;
+        private const int _MW_SCHEME_PARAMS_CNT = 5;
+        private const int _SIXTH_SCHEME_PARAMS_CNT = 6;
+
         private string _seriesSales = "Продажи";
+        private string _dataLenErr = "Ошибка!!! Неверное количество данных";
 
         public SchreibfederForm(List<SaleDataRow> values)
         {
@@ -55,8 +61,6 @@ namespace IS_Predidiction_and_store_optimize
             {
                 chart.Series[_seriesSales].Points.AddXY(pair.Item2, pair.Item1);
             }
-
-            //GetPredictionChartData(chart);
         }
 
         #endregion
@@ -88,40 +92,84 @@ namespace IS_Predidiction_and_store_optimize
         // Средняя взвешенная
         private void button2_Click(object sender, EventArgs e)
         {
-            ModelForm MidWeightedForm = new ModelForm(new MidWeighted());
-            MidWeightedForm.InitChart(chart);
+            if (_chartData.Count != _MW_SCHEME_PARAMS_CNT)
+            {
+                MessageBox.Show(_dataLenErr);
+                return;
+            }
+
+            ModelForm MidWeightedForm = new ModelForm(new MidWeighted(), this);
+            MidWeightedForm.InitChart(chart, _inputYValues, _inputXValues);
             MidWeightedForm.ShowDialog();
         }
 
         // Средняя взвешенная с усиленным влиянием последнего месяца
         private void button1_Click(object sender, EventArgs e)
         {
-            ModelForm mwLastMonth = new ModelForm(new MidWeightedLastMonthForced());
-            mwLastMonth.InitChart(chart);
+            if (_chartData.Count != _THREE_SCHEME_PARAMS_CNT)
+            {
+                MessageBox.Show(_dataLenErr);
+                return;
+            }
+
+            ModelForm mwLastMonth = new ModelForm(new MidWeightedLastMonthForced(), this);
+            mwLastMonth.InitChart(chart, _inputYValues, _inputXValues);
             mwLastMonth.ShowDialog();
         }
 
         // Средняя взвешенная для монотонного зарактера спроса
         private void button3_Click(object sender, EventArgs e)
         {
-            ModelForm mwMonotonus = new ModelForm(new MidWeightedMonotonus());
-            mwMonotonus.InitChart(chart);
+            if (_chartData.Count != _THREE_SCHEME_PARAMS_CNT)
+            {
+                MessageBox.Show(_dataLenErr);
+                return;
+            }
+
+            ModelForm mwMonotonus = new ModelForm(new MidWeightedMonotonus(), this);
+            mwMonotonus.InitChart(chart, _inputYValues, _inputXValues);
             mwMonotonus.ShowDialog();
         }
 
         // Средняя взвешенная сезонная
         private void button4_Click(object sender, EventArgs e)
         {
-            ModelForm mwSeasonal = new ModelForm(new MidWeightedSeasonal());
-            mwSeasonal.InitChart(chart);
+            if (_chartData.Count != _WMS_SCHEME_PARAMS_CNT)
+            {
+                MessageBox.Show(_dataLenErr);
+                return;
+            }
+
+            ModelForm mwSeasonal = new ModelForm(new MidWeightedSeasonal(), this);
+            mwSeasonal.InitChart(chart, _inputYValues, _inputXValues);
             mwSeasonal.ShowDialog();
         }
 
-        // Простая сезонная средняя
+        // Простая трехмесячная средняя
         private void button5_Click(object sender, EventArgs e)
         {
-            ModelForm simpleSeasonalMid = new ModelForm(new SimpleSeasonalMid());
-            simpleSeasonalMid.InitChart(chart);
+            if(_chartData.Count != _THREE_SCHEME_PARAMS_CNT)
+            {
+                MessageBox.Show(_dataLenErr);
+                return;
+            }
+
+            ModelForm simpleSeasonalMid = new ModelForm(new SimpleSeasonalMid(), this);
+            simpleSeasonalMid.InitChart(chart, _inputYValues, _inputXValues);
+            simpleSeasonalMid.ShowDialog();
+        }
+
+        // Простая шестимесячная средняя
+        private void button6_Click(object sender, EventArgs e)
+        {
+            if (_chartData.Count != _SIXTH_SCHEME_PARAMS_CNT)
+            {
+                MessageBox.Show(_dataLenErr);
+                return;
+            }
+
+            ModelForm simpleSeasonalMid = new ModelForm(new SimpleSeasonalMidSixth(), this);
+            simpleSeasonalMid.InitChart(chart, _inputYValues, _inputXValues);
             simpleSeasonalMid.ShowDialog();
         }
 

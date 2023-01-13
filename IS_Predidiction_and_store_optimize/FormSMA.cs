@@ -92,13 +92,19 @@ namespace IS_Predidiction_and_store_optimize
                 return;
             }
 
+            List<double> predicts = _predictionMethod.PredictNextValues(_inputYValues, T);
+
+            if (predicts == null)
+            {
+                return;
+            }
 
             chart.Legends[title].ForeColor = _seriesColors.Pop();
             chart.Series.Add(title);
             chart.Series[title].ChartType = SeriesChartType.Line;
             chart.Series[title].BorderWidth = 3;
 
-            List<double> predicts = _predictionMethod.PredictNextValues(_inputYValues, T);
+            // 95-100
 
             for (int i = T; i < _chartData.Count; i++)
             {

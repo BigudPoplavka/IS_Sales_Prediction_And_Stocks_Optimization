@@ -10,12 +10,13 @@ namespace IS_Predidiction_and_store_optimize.PredictionsMethods.SchreibfederSche
     {
         public SimpleSeasonalMid()
         {
+         
             coeffs = new List<double>()
             { 1, 1, 1 };
-
-            MenuText = "Простая сезонная средняя";
+            
+            MenuText = "Простая трехмесячная средняя";
             Description = "Рассматриваются показатели за соответствующие " +
-                "три месяца прошлого года(с учетом или без учета несезонного коэффициента тенденции)";
+                "три месяца прошлого года (с учетом или без учета несезонного коэффициента тенденции)";
         }
     }
 }

@@ -60,23 +60,10 @@ namespace IS_Predidiction_and_store_optimize
                 (178, 22)
             };
 
-            List<(double, int)> test3 = new List<(double, int)>()
-            {
-                (560, 28),
-                (310, 31),
-                (450, 30),
-                (372, 31),
-                (310, 31)
-            };
-
             List<double> test4 = new List<double>()
             {
                 15, 40, 40, 30, 5, 30, 15, 50, 5, 34, 20, 15, 40, 30, 15, 30, 20
             };
-
-            //SchreibfederModels schreibfederModel = new MidWeighted();
-            //predictionMethod = schreibfederModel;
-            //predictionMethod.PredictNextMonthValues(test3, 28, 1);
 
             //schreibfederModel = new MidWeightedMonotonus();
             //predictionMethod = schreibfederModel;
@@ -343,17 +330,6 @@ namespace IS_Predidiction_and_store_optimize
             }
 
             List<SaleDataRow> savedData = GetSavedData();
-
-            //List<SaleDataRow> savedData = null;
-
-            //if (_importedData == null)
-            //{
-            //    savedData = GetDataFromGridView();
-            //}
-            //else
-            //{
-            //    savedData = _importedData;
-            //}
 
             predictionMethod = new SMAModel();
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace IS_Predidiction_and_store_optimize.PredictionsMethods
 {
@@ -11,6 +12,7 @@ namespace IS_Predidiction_and_store_optimize.PredictionsMethods
         private const int _MIN_T = 2;
         private const int _MIN_SALES_LEN = 2;
 
+        private string _indexErr = "Ошибка!!! Недостаточно данных для данного окна";
         public SMAModel() { }
 
         /// <summary>
@@ -31,32 +33,52 @@ namespace IS_Predidiction_and_store_optimize.PredictionsMethods
 
             double salesSum = salesList[0];
 
-            for (int i = 1; i < T; i++)
+            try
             {
-                salesSum += salesList[i];
+                for (int i = 1; i < T; i++)
+                {
+                    salesSum += salesList[i];
+                }
+            }
+            catch(ArgumentOutOfRangeException e)
+            {
+                MessageBox.Show(_indexErr);
+                return null;
             }
 
             salesSum /= T;
 
             prediction.Add(salesSum);
 
-            
-            for (int i = 1; i < salesList.Count - 1; i++)
+            try
             {
-                salesSum = 0;
-
-                for (int j = i; j < i + T; j++)
+                for (int i = 1; i < salesList.Count - 1; i++)
                 {
-                    salesSum += salesList[j];
-                }
+                    salesSum = 0;
 
-                salesSum /= T;
-                prediction.Add(salesSum);
+                    for (int j = i; j < i + T; j++)
+                    {
+                        salesSum += salesList[j];
+                    }
 
-                if(prediction.Count == salesList.Count - T)
-                {
-                    break;
+                    salesSum /= T;
+                    prediction.Add(salesSum);
+
+                    if (prediction.Count == salesList.Count - T)
+                    {
+                        break;
+                    }
                 }
+            }
+            catch(ArgumentOutOfRangeException e)
+            {
+                MessageBox.Show(_indexErr);
+                return null;
+            }
+            catch(IndexOutOfRangeException)
+            {
+                MessageBox.Show(_indexErr);
+                return null;
             }
 
             return prediction;

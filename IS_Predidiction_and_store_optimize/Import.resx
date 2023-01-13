@@ -57,4 +57,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="label4.Text" xml:space="preserve">
+    <value>SMA:
+- Ряд из n значений
+Шрайбфедер:
+- Средняя взвешенная: n значений
+- Средняя взвешенная сезонная: 2 значения (прошлогодних месяцев после целевого)
+- Средняя взвешенная с усиленным влиянием последнего: 3 значения
+- Средняя взвешенная для монотонного характера: 3 значения
+- Шестимесячная средняя: по 6 значений
+- Трехмесячная средняя: по 3 значения
+</value>
+  </data>
 </root>
