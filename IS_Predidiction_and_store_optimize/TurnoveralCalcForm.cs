@@ -101,7 +101,7 @@ namespace IS_Predidiction_and_store_optimize.MetricsCalculators
                         midValues.Add(int.Parse(value.Replace('\r', ' ').Trim()));
                     }
 
-                    if (midValues.Count != 3 || midValues.Count != 6)
+                    if (midValues.Count != 3 && midValues.Count != 6)
                     {
                         MessageBox.Show(_errInputsCnt);
                         return false;

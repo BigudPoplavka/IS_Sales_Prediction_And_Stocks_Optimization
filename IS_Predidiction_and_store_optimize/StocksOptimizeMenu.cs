@@ -58,12 +58,6 @@ namespace IS_Predidiction_and_store_optimize
             form.Show();
         }
 
-        // Рентабельность запасов
-        private void button4_Click(object sender, EventArgs e)
-        {
-
-        }
-
         #endregion
 
         private void StocksOptimizeMenu_FormClosing(object sender, FormClosingEventArgs e)

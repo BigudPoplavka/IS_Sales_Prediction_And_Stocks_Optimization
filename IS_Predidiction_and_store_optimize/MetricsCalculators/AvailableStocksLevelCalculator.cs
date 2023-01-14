@@ -6,9 +6,43 @@ using System.Threading.Tasks;
 
 namespace IS_Predidiction_and_store_optimize.MetricsCalculators
 {
+    public struct ASLCalcDescription
+    {
+        public string title;
+        public List<string> paramsDesription;
+
+        public ASLCalcDescription(string titleParam, List<string> paramsDesrList)
+        {
+            title = titleParam;
+            paramsDesription = paramsDesrList;
+        }
+    }
+
     public class AvailableStocksLevelCalculator: StockStatsCalculator
     {
-        public AvailableStocksLevelCalculator() { }
+        public ASLCalcDescription descrMidLevel;
+        public ASLCalcDescription descrAvailabilityInDay;
+        public ASLCalcDescription descrMidDeficiteToMidStocks;
+        public ASLCalcDescription descrStockRentabl;
+
+        public AvailableStocksLevelCalculator() 
+        {
+            descrMidLevel = new ASLCalcDescription("Уровень располагаемых запасов в средних значениях за период", 
+                new List<string>() { "Объем запасов на начало периода, в натуральном или денежном выражении",
+                                     "Объем запасов на конец периода, в натуральном или денежном выражении" });
+
+            descrAvailabilityInDay = new ASLCalcDescription("Обеспеченность предприятия запасами в днях", 
+                new List<string>() { "Размер наличного текущего запаса в момент времени i, ед",
+                                     "Среднесуточный расход запаса, ед./день"});
+
+            descrMidDeficiteToMidStocks = new ASLCalcDescription("Отношение среднего дефицита к среднему запасу (%)", 
+                new List<string>() { "Средний дефицит",
+                                     "Средний запас"});
+
+            descrStockRentabl = new ASLCalcDescription("Рентабельность запасов", 
+                new List<string>() { "чистая прибыль от реализации запасов (валовая прибыль за минусом налога)",
+                                     "себестоимость запасов или затраты на формирование запасов" });
+        }
 
         /// <summary>
         /// Уровень располагаемых запасов в средних значениях за период
@@ -16,7 +50,7 @@ namespace IS_Predidiction_and_store_optimize.MetricsCalculators
         /// <param name="startPeriodValue">Объем запасов на начало периода, в натуральном или денежном выражении</param>
         /// <param name="endPeriodValue">Объем запасов на конец периода, в натуральном или денежном выражении</param>
         /// <returns>Средний уровень за период</returns>
-        public double CalculateMidLevel(int startPeriodValue, int endPeriodValue)
+            public double CalculateMidLevel(int startPeriodValue, int endPeriodValue)
         {
             return ((startPeriodValue * 1.0) + (endPeriodValue * 1.0)) / 2;
         }
@@ -35,40 +69,18 @@ namespace IS_Predidiction_and_store_optimize.MetricsCalculators
                 sum += valuesForDates[i];
             }
 
-            return sum / (valuesForDates.Count - 1);
+            return Math.Round(sum / (valuesForDates.Count - 1), 2);
         }
 
         /// <summary>
-        /// Средний запас по формуле средней арифметической взвешенной. Можно использовать для рассчета среднего дефицита
-        /// </summary>
-        /// <param name="valuesForPeriods">Словарь периодов и соответсвтующих им значений </param>
-        /// <returns>Средний запас</returns>
-        public double CalculateArithmeticWeightedAverage(Dictionary<double, int> valuesForPeriods)
-        {
-            var sumTop = 0.0;
-            var sumBottom = 0.0;
-
-            var values = valuesForPeriods.Keys.ToArray();
-            var periods = valuesForPeriods.Values.ToArray();
-
-            for(int i = 0; i < valuesForPeriods.Count - 2; i++)
-            {
-                sumTop += values[i] * periods[i];
-                sumBottom += periods[i];
-            }
-
-            return sumTop / sumBottom;
-        }
-
-        /// <summary>
-        /// Обеспеченность предприятия запасами в днях
+        /// Коэффициент обеспеченности предприятия запасами в день
         /// </summary>
         /// <param name="currStock">Размер наличного текущего запаса в момент времени i, ед</param>
         /// <param name="averageDailyConsumption">Среднесуточный расход запаса, ед./день</param>
-        /// <returns>Дни обеспеченности</returns>
+        /// <returns>Показатель обеспеченности</returns>
         public double CalculateStockAvailabilityInDay(int currStock, int averageDailyConsumption)
         {
-            return (currStock * 1.0) / (averageDailyConsumption * 1.0);
+            return Math.Round((currStock / averageDailyConsumption) * 1.0, 1);
         }
 
         /// <summary>
@@ -77,9 +89,9 @@ namespace IS_Predidiction_and_store_optimize.MetricsCalculators
         /// <param name="midDeficite">Средний дефицит</param>
         /// <param name="midStocks">Средний запас</param>
         /// <returns>Процент </returns>
-        public double CalculateMidDeficiteToMidStocks(int midDeficite, int midStocks)
+        public double CalculateMidDeficiteToMidStocks(int midStocks, int midDeficite)
         {
-            return (midDeficite / midStocks * 100) * 1.0;
+            return Math.Round(((midDeficite * 1.0) / (midStocks * 1.0)) * 100, 1);
         }
 
         /// <summary>
@@ -92,7 +104,20 @@ namespace IS_Predidiction_and_store_optimize.MetricsCalculators
         /// <returns></returns>
         public double CalculateStonksIndex(double CRealizMZ, double midStockPrice, double stonks, double PrealizMZ)
         {
-            return CRealizMZ / midStockPrice * ((PrealizMZ / stonks) * 100);
+            return Math.Round(CRealizMZ / midStockPrice * ((PrealizMZ / stonks) * 100), 2);
+        }
+
+        /// <summary>
+        /// Рентабельность запасов
+        /// </summary>
+        /// <param name="clearStonks">чистая прибыль от реализации запасов, которая определяется по данным бухгалтерской
+        /// отчетности как валовая прибыль за минусом налога на прибыль (заработной платы и процентных платежей).</param>
+        /// <param name="stonksFormingPrice"> себестоимость запасов или затраты на формирование запасов 
+        /// (включая стоимость самих МЦ в запасах и затраты на обслуживание запаса).</param>
+        /// <returns></returns>
+        public double CalculateStocksRentabl(int clearStonks, int stonksFormingPrice)
+        {
+            return (clearStonks * 1.0) / (stonksFormingPrice * 1.0) * 100;
         }
     }
 }
