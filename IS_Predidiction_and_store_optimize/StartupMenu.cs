@@ -40,7 +40,9 @@ namespace IS_Predidiction_and_store_optimize
         // Вызов окна -> Оптимизация запаслв
         private void button2_Click(object sender, EventArgs e)
         {
-
+            StocksOptimizeMenu stocksOptimizeMenu = new StocksOptimizeMenu();
+            stocksOptimizeMenu.Show();
+            Hide();
         }
 
         #endregion

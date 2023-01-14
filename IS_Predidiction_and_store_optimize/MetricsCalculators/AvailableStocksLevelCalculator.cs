@@ -18,7 +18,7 @@ namespace IS_Predidiction_and_store_optimize.MetricsCalculators
         /// <returns>Средний уровень за период</returns>
         public double CalculateMidLevel(int startPeriodValue, int endPeriodValue)
         {
-            return (startPeriodValue + endPeriodValue) / 2;
+            return ((startPeriodValue * 1.0) + (endPeriodValue * 1.0)) / 2;
         }
 
         /// <summary>
@@ -66,9 +66,9 @@ namespace IS_Predidiction_and_store_optimize.MetricsCalculators
         /// <param name="currStock">Размер наличного текущего запаса в момент времени i, ед</param>
         /// <param name="averageDailyConsumption">Среднесуточный расход запаса, ед./день</param>
         /// <returns>Дни обеспеченности</returns>
-        public int CalculateStockAvailabilityInDay(int currStock, int averageDailyConsumption)
+        public double CalculateStockAvailabilityInDay(int currStock, int averageDailyConsumption)
         {
-            return currStock / averageDailyConsumption;
+            return (currStock * 1.0) / (averageDailyConsumption * 1.0);
         }
 
         /// <summary>
@@ -79,7 +79,20 @@ namespace IS_Predidiction_and_store_optimize.MetricsCalculators
         /// <returns>Процент </returns>
         public double CalculateMidDeficiteToMidStocks(int midDeficite, int midStocks)
         {
-            return midDeficite / midStocks * 100;
+            return (midDeficite / midStocks * 100) * 1.0;
+        }
+
+        /// <summary>
+        /// Индекс доходности запасов
+        /// </summary>
+        /// <param name="CRealizMZ">себестоимость реализованных за рассматриваемый период запасов, ден. ед.</param>
+        /// <param name="midStockPrice">средняя себестоимость запасов, хранимых на складе за рассматриваемый период времени, ден. ед.</param>
+        /// <param name="stonks">выручка от реализации запасов, ден. ед.</param>
+        /// <param name="PrealizMZ">прибыль от реализации запасов за рассматриваемый период, ден. ед.</param>
+        /// <returns></returns>
+        public double CalculateStonksIndex(double CRealizMZ, double midStockPrice, double stonks, double PrealizMZ)
+        {
+            return CRealizMZ / midStockPrice * ((PrealizMZ / stonks) * 100);
         }
     }
 }

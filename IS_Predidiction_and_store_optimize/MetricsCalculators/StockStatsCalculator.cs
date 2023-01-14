@@ -18,8 +18,8 @@ namespace IS_Predidiction_and_store_optimize.MetricsCalculators
 
     public abstract class StockStatsCalculator
     {
-        protected MethodDescription methodDescription;
-        protected MethodDescription CalcDescription => methodDescription;
+        public MethodDescription methodDescription;
+        public MethodDescription CalcDescription => methodDescription;
     }
 
     public class CalcInitilizer

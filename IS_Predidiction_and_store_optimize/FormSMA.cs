@@ -70,12 +70,6 @@ namespace IS_Predidiction_and_store_optimize
 
         #endregion
 
-        #region Рассчеты
-
-
-
-        #endregion
-
         #region Инициализация UI и компонентов
 
         private void GetPredictionChartData(Chart chart, int T)

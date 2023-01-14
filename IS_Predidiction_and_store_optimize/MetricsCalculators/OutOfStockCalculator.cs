@@ -25,12 +25,13 @@ namespace IS_Predidiction_and_store_optimize.MetricsCalculators
         /// <summary>
         /// Рассчет уровня наличия запасов
         /// </summary>
-        /// <param name="SKUPositions">Общее количество номенклатурных позиций (SKU) в ассортименте товаров</param>
-        /// <param name="allPositions">Количество номенклатурных позиций (SKU), имеющих нулевой запас</param>
+        /// <param name="SKUPositions">Количество номенклатурных позиций (SKU), имеющих нулевой запас</param>
+        /// <param name="allPositions">Общее количество номенклатурных позиций (SKU) в ассортименте товаров</param>
         /// <returns>Уровень наличия запасов</returns>
         public double CalculateOutOfStock(int SKUPositions, int allPositions)
         {
-            return SKUPositions / allPositions;
+            double res = (SKUPositions * 1.0) / (allPositions * 1.0);
+            return Math.Round(res, 2);
         }
     }
 }

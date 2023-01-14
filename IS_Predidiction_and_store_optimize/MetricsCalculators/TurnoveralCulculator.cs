@@ -18,7 +18,8 @@ namespace IS_Predidiction_and_store_optimize.MetricsCalculators
                 "тем более эффективна инвестиция. Общепринятым измерителем скорости является показатель оборачиваемости запаса.";
 
             methodDescription.methodParams = new string[] { "Общий объем годовых продаж в закупочных ценах",
-                                                            "Средний ежемесячный объем товарного запаса — на основании предыдущих 3 или 6 мес." };
+                                                            "Средний ежемесячный объем товарного запаса — на основании предыдущих 3 или 6 мес. " +
+                                                            "Введите готовое среднее значение или 3 / 6 значений в поле ниже" };
         }
 
         /// <summary>
@@ -29,7 +30,8 @@ namespace IS_Predidiction_and_store_optimize.MetricsCalculators
         /// <returns></returns>
         public double CalculateTurnoveral(int allYearSales, int midMonthSales)
         {
-            return allYearSales / midMonthSales;
+            var res = (allYearSales * 1.0) / (midMonthSales * 1.0);
+            return Math.Round(res, 2);
         }
     }
 }
