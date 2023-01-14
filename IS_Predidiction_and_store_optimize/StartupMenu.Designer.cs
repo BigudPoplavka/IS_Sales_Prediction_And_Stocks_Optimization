@@ -176,8 +176,8 @@ namespace IS_Predidiction_and_store_optimize
             this.tableLayoutPanel1.SetRowSpan(this.tableLayoutPanel3, 3);
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 32F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 68F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 29F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 93F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 23F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 127F));
             this.tableLayoutPanel3.Size = new System.Drawing.Size(372, 218);
             this.tableLayoutPanel3.TabIndex = 5;
             // 
@@ -188,11 +188,11 @@ namespace IS_Predidiction_and_store_optimize
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(23, 30);
+            this.label3.Location = new System.Drawing.Point(23, 21);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(346, 65);
+            this.label3.Size = new System.Drawing.Size(346, 46);
             this.label3.TabIndex = 1;
-            this.label3.Text = "* SMA (скользящая средняя)\r\n* Хольта-Винтерса\r\n* Шрайбфедера";
+            this.label3.Text = "* SMA (скользящая средняя)\r\n* Шрайбфедера";
             // 
             // label5
             // 
@@ -201,12 +201,12 @@ namespace IS_Predidiction_and_store_optimize
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(23, 124);
+            this.label5.Location = new System.Drawing.Point(23, 90);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(346, 94);
+            this.label5.Size = new System.Drawing.Size(346, 128);
             this.label5.TabIndex = 3;
-            this.label5.Text = "* Оценки запаса\r\n* Оценки деффицита\r\n* Оценки средних значений\r\n* Показатели упра" +
-    "вления";
+            this.label5.Text = "* Оценки запаса\r\n* Оценки деффицита\r\n* Оценки средних значений\r\n* Рентабельность\r" +
+    "\n* Индекс доходности \r\n* Индекс обеспеченности";
             // 
             // label2
             // 
@@ -218,7 +218,7 @@ namespace IS_Predidiction_and_store_optimize
             this.label2.ForeColor = System.Drawing.Color.SpringGreen;
             this.label2.Location = new System.Drawing.Point(3, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(366, 30);
+            this.label2.Size = new System.Drawing.Size(366, 21);
             this.label2.TabIndex = 0;
             this.label2.Text = "Методы предсказания";
             // 
@@ -230,9 +230,9 @@ namespace IS_Predidiction_and_store_optimize
             this.label4.AutoSize = true;
             this.tableLayoutPanel3.SetColumnSpan(this.label4, 2);
             this.label4.ForeColor = System.Drawing.Color.SpringGreen;
-            this.label4.Location = new System.Drawing.Point(3, 95);
+            this.label4.Location = new System.Drawing.Point(3, 67);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(366, 29);
+            this.label4.Size = new System.Drawing.Size(366, 23);
             this.label4.TabIndex = 2;
             this.label4.Text = "Метрики оптимизации запасов";
             // 
